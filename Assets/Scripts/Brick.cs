@@ -5,6 +5,7 @@ public class Brick : MonoBehaviour
 
     public int Health;
     public static int BreakableCount = 0;
+    public Sprite[] Sprites;
     private Ball _Ball;
     private LevelManager _LevelManager;
 
@@ -12,6 +13,7 @@ public class Brick : MonoBehaviour
     {
         _Ball = FindObjectOfType<Ball>();
         _LevelManager = FindObjectOfType<LevelManager>();
+        GetComponent<SpriteRenderer>().sprite = Sprites[Health - 1];
         BreakableCount++;
     }
 
@@ -22,6 +24,13 @@ public class Brick : MonoBehaviour
             BreakableCount--;
             _LevelManager.BrickDestroyed();
             Destroy(gameObject);
+        }
+        else
+        {
+            if (GetComponent<SpriteRenderer>().sprite.name != Sprites[Health - 1].name)
+            {
+                GetComponent<SpriteRenderer>().sprite = Sprites[Health - 1];
+            }
         }
     }
 
