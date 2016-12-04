@@ -5,7 +5,6 @@ public class Paddle : MonoBehaviour
 
     private Camera _Camera;
     private Ball _Ball;
-    public float LaunchSpeed;
 
     private bool _BallAttached = true;
     private float _MinPosX;
@@ -44,7 +43,7 @@ public class Paddle : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _BallAttached = false;
-                _Ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, LaunchSpeed), ForceMode2D.Impulse);
+                _Ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1), ForceMode2D.Impulse);
             }
         }
     }
