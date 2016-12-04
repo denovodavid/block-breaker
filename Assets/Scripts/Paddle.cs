@@ -47,7 +47,13 @@ public class Paddle : MonoBehaviour
                 _Ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, LaunchSpeed), ForceMode2D.Impulse);
             }
         }
+    }
 
-
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!_BallAttached && other.gameObject.tag == _Ball.tag)
+        {
+            // TODO: Play boop sound effect.
+        }
     }
 }
