@@ -2,7 +2,7 @@
 
 public class Paddle : MonoBehaviour
 {
-
+    public bool AutoPlay = false;
     private Camera _Camera;
     private Ball _Ball;
 
@@ -20,19 +20,14 @@ public class Paddle : MonoBehaviour
 
     void Update()
     {
-        float paddlePosX = _Camera.ScreenToWorldPoint(Input.mousePosition).x;
-        float paddleOffsetX = GetComponent<Collider2D>().bounds.size.x / 2;
-
-        if (paddlePosX < _MinPosX + paddleOffsetX)
+        if (!AutoPlay)
         {
-            paddlePosX = _MinPosX + paddleOffsetX;
+            Follow(_Camera.ScreenToWorldPoint(Input.mousePosition).x);
         }
-        else if (paddlePosX > _MaxPosX - paddleOffsetX)
+        else
         {
-            paddlePosX = _MaxPosX - paddleOffsetX;
+            Follow(_Ball.transform.position.x);
         }
-
-        transform.position = new Vector3(paddlePosX, transform.position.y, transform.position.z);
 
         if (_BallAttached)
         {
@@ -46,6 +41,22 @@ public class Paddle : MonoBehaviour
                 _Ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1), ForceMode2D.Impulse);
             }
         }
+    }
+
+    void Follow(float xPosition)
+    {
+        float paddleOffsetX = GetComponent<Collider2D>().bounds.size.x / 2;
+
+        if (xPosition < _MinPosX + paddleOffsetX)
+        {
+            xPosition = _MinPosX + paddleOffsetX;
+        }
+        else if (xPosition > _MaxPosX - paddleOffsetX)
+        {
+            xPosition = _MaxPosX - paddleOffsetX;
+        }
+
+        transform.position = new Vector3(xPosition, transform.position.y, transform.position.z);
     }
 
     void OnCollisionEnter2D(Collision2D other)
