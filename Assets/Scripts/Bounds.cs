@@ -3,10 +3,12 @@
 public class Bounds : MonoBehaviour
 {
     private Camera _Camera;
+    private Ball _Ball;
 
     void Start()
     {
         _Camera = FindObjectOfType<Camera>();
+        _Ball = FindObjectOfType<Ball>();
 
         Vector3 bottomLeftPos = _Camera.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 topRightPos = _Camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
@@ -26,6 +28,14 @@ public class Bounds : MonoBehaviour
 
         UpperBound.size = new Vector2(BoundWidth + 2, 1);
         UpperBound.offset = new Vector2(BoundMiddle.x, topRightPos.y + (UpperBound.size.y / 2));
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == _Ball.tag)
+        {
+            // TODO: Play bip sound effect.
+        }
     }
 
 }
