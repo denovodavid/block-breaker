@@ -23,6 +23,7 @@ public class Brick : MonoBehaviour
         if (Health <= 0)
         {
             BreakableCount--;
+            // TODO: Play shatter sound effect.
             _LevelManager.BrickDestroyed();
             Destroy(gameObject);
         }
@@ -40,6 +41,7 @@ public class Brick : MonoBehaviour
         if (other.gameObject.tag == _Ball.tag)
         {
             Health--;
+            // TODO: Play crack sound effect.
         }
     }
 }
