@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(string name)
     {
         print("Load level requested for: " + name);
+        Brick.BreakableCount = 0;
         SceneManager.LoadScene(name);
     }
 
