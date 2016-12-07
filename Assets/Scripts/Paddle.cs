@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
@@ -57,6 +57,11 @@ public class Paddle : MonoBehaviour
         if (!_BallAttached && other.gameObject.tag == _Ball.tag)
         {
             // TODO: Play boop sound effect.
+
+            // TODO: Bounce Ball at different Angles.
+            // prints distance from paddle center in %. Left to Right. -100% to 100%.
+            // print((other.contacts[0].point.x - transform.position.x) / GetComponent<BoxCollider2D>().size.x * 2 * 100 + "%");
+
         }
     }
 }
