@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
@@ -47,14 +47,7 @@ public class Paddle : MonoBehaviour
     {
         float paddleOffsetX = GetComponent<Collider2D>().bounds.size.x / 2;
 
-        if (xPosition < _MinPosX + paddleOffsetX)
-        {
-            xPosition = _MinPosX + paddleOffsetX;
-        }
-        else if (xPosition > _MaxPosX - paddleOffsetX)
-        {
-            xPosition = _MaxPosX - paddleOffsetX;
-        }
+        xPosition = Mathf.Clamp(xPosition, _MinPosX + paddleOffsetX, _MaxPosX - paddleOffsetX);
 
         transform.position = new Vector3(xPosition, transform.position.y, transform.position.z);
     }
