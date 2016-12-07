@@ -13,7 +13,6 @@ public class Brick : MonoBehaviour
     {
         _Ball = FindObjectOfType<Ball>();
         _LevelManager = FindObjectOfType<LevelManager>();
-        GetComponent<SpriteRenderer>().sprite = Sprites[Health - 1];
         GetComponent<SpriteRenderer>().color = Random.ColorHSV(0, 1, 0.5f, 0.5f, 1, 1, 1, 1);
         BreakableCount++;
     }
@@ -29,7 +28,11 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            if (GetComponent<SpriteRenderer>().sprite.name != Sprites[Health - 1].name)
+            if (Sprites[Health - 1] == null)
+            {
+                Debug.LogError("Cannot find brick sprite: Sprites[" + (Health - 1) + "]");
+            }
+            else if (GetComponent<SpriteRenderer>().sprite.name != Sprites[Health - 1].name)
             {
                 GetComponent<SpriteRenderer>().sprite = Sprites[Health - 1];
             }
