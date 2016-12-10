@@ -27,7 +27,7 @@ public class Brick : MonoBehaviour
             BreakableCount--;
             _LevelManager.BrickDestroyed();
             // TODO: Play shatter sound effect.
-            Instantiate(Smoke, transform.position, Quaternion.identity);
+            PuffSmoke();
             Destroy(gameObject);
         }
         else
@@ -50,5 +50,13 @@ public class Brick : MonoBehaviour
             Health--;
             // TODO: Play crack sound effect.
         }
+    }
+
+    void PuffSmoke()
+    {
+        GameObject smokePuff = Instantiate(Smoke, transform.position, Quaternion.identity);
+        ParticleSystem ps = smokePuff.GetComponent<ParticleSystem>();
+        ParticleSystem.MainModule psMain = ps.main;
+        psMain.startColor = _Color;
     }
 }
