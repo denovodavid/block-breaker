@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour
     public int Health;
     public static int BreakableCount = 0;
     public Sprite[] Sprites;
+    public GameObject Smoke;
     private Ball _Ball;
     private LevelManager _LevelManager;
 
@@ -22,8 +23,9 @@ public class Brick : MonoBehaviour
         if (Health <= 0)
         {
             BreakableCount--;
-            // TODO: Play shatter sound effect.
             _LevelManager.BrickDestroyed();
+            // TODO: Play shatter sound effect.
+            Instantiate(Smoke, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         else
