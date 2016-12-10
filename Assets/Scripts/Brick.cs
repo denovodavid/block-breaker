@@ -9,12 +9,14 @@ public class Brick : MonoBehaviour
     public GameObject Smoke;
     private Ball _Ball;
     private LevelManager _LevelManager;
+    private Color _Color;
 
     void Start()
     {
         _Ball = FindObjectOfType<Ball>();
         _LevelManager = FindObjectOfType<LevelManager>();
-        GetComponent<SpriteRenderer>().color = Random.ColorHSV(0, 1, 0.5f, 0.5f, 1, 1, 1, 1);
+        _Color = Random.ColorHSV(0, 1, 0.5f, 0.5f, 1, 1, 1, 1);
+        GetComponent<SpriteRenderer>().color = _Color;
         BreakableCount++;
     }
 
