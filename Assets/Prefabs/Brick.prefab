@@ -95,6 +95,7 @@ MonoBehaviour:
   - {fileID: 21300014, guid: 7578b2525674e26438826d808aac2b95, type: 3}
   - {fileID: 21300012, guid: 7578b2525674e26438826d808aac2b95, type: 3}
   - {fileID: 21300010, guid: 7578b2525674e26438826d808aac2b95, type: 3}
+  Smoke: {fileID: 1122528618730160, guid: 19e1f4e5308bfc24db351cfec7b92883, type: 2}
 --- !u!212 &212000010310272510
 SpriteRenderer:
   m_ObjectHideFlags: 1
